@@ -1,0 +1,37 @@
+David Romero
+PID: 3624439
+COP3530 U01C
+
+Dartmouth 1 vs. Dartmouth 2
+run:
+The longest common substring is 41 characters '," said Hakan Tell, a classics ...'
+Time elapsed finding LCS: 13ms
+BUILD SUCCESSFUL (total time: 0 seconds)
+
+Moby Dick vs. War and Peace
+run:
+run:
+The longest common substring is 37 characters 's at one and the same instant o...'
+Time elapsed finding LCS: 5144ms
+BUILD SUCCESSFUL (total time: 6 seconds)
+
+Moby Dick vs. Moby Dick
+run:
+The longest common substring is 1185580 characters 'Loomings Call me Ishmael. Some ...'
+Time elapsed finding LCS: 678787ms
+BUILD SUCCESSFUL (total time: 11 minutes 19 seconds)
+
+----------------------------------------------------------------------------------------------------------------------
+Suppose the two data files are both the text for Moby Dick. Obviously the longest common substring is the entire file. 
+Explain as precisely as possible how your algorithm behaves and why. Please remember that all work, including the 
+answer to this question is to be individual work.
+
+As can be noted, the program is able to analyze Moby Dick and War and Peace (about 4 million characters total) in 
+6 seconds. However, when we attempt to analayze Moby Dick vs. itself, which together are 2 million characters, the 
+time it takes is 11 minutes. This is because the program will begin breaking up the books in suffixes and then proceed
+to sort and analyze the suffixes based off the prefixes. However when populating the LCP array, which keeps track of 
+the characters in common with the previous prefix, the method longestPrefix is called which contains a while loop.
+While it normally does not cause problems when comparing two different books, when comparing the same book, it 
+has to go through the whole length of the MyString comparing it. In addition this longestPrefix method is called
+inside a for loop, making the operation an O(N^2) operation.
+ 
